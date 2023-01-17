@@ -4,7 +4,6 @@ import ContentLoader from 'react-content-loader';
 import AppContext from '../../context';
 
 import styles from './Card.module.scss';
-import {FavoritesType} from "../../App";
 
 type CardPropsType = {
     id: string

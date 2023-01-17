@@ -1,8 +1,13 @@
 import React, {useContext} from 'react';
 import AppContext from '../context';
-
-const Info = ({ title, image, description }) => {
-  const { setCartOpened } = useContext(AppContext);
+type InfoPropsType = {
+    title:string
+    image:string
+    description:string
+}
+const Info = ({ title, image, description }: InfoPropsType) => {
+  // @ts-ignore
+    const { setCartOpened } = useContext(AppContext);
 
   return (
     <div className="cartEmpty d-flex align-center justify-center flex-column flex">

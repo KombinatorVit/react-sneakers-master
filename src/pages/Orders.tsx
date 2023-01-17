@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import axios from 'axios';
 
 import Card from '../components/Card';
 import AppContext from '../context';
 
 function Orders() {
-  const { onAddToFavorite, onAddToCart } = React.useContext(AppContext);
-  const [orders, setOrders] = React.useState([]);
+  // @ts-ignore
+  const { onAddToFavorite, onAddToCart } = useContext(AppContext);
+  const [orders, setOrders] = React.useState<OrdersType[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
 
@@ -41,4 +42,11 @@ function Orders() {
   );
 }
 
+
+export interface OrdersType {
+  createdAt: string;
+  name: string;
+  avatar: string;
+  id: string;
+}
 export default Orders;
