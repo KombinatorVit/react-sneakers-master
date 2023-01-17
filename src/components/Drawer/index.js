@@ -26,7 +26,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 
       for (let i = 0; i < cartItems.length; i++) {
         const item = cartItems[i];
-        await axios.delete('/cart/' + item.id);
+        await axios.delete('https://63c597eee1292e5bea270389.mockapi.io/cart/' + item.id);
         await delay(1000);
       }
     } catch (error) {
@@ -53,7 +53,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 
                   <div className="mr-20 flex">
                     <p className="mb-5">{obj.title}</p>
-                    <b>{obj.price} руб.</b>
+                    <b>{obj.price} грн.</b>
                   </div>
                   <img
                     onClick={() => onRemove(obj.id)}
@@ -69,12 +69,12 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                 <li>
                   <span>Итого:</span>
                   <div></div>
-                  <b>{totalPrice} руб. </b>
+                  <b>{totalPrice} грн. </b>
                 </li>
                 <li>
                   <span>Налог 5%:</span>
                   <div></div>
-                  <b>{(totalPrice / 100) * 5} руб. </b>
+                  <b>{(totalPrice / 100) * 5} грн. </b>
                 </li>
               </ul>
               <button disabled={isLoading} onClick={onClickOrder} className="greenButton">

@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {ChangeEvent, FC} from 'react';
 
 import Card from '../components/Card';
+import {CartType, FavoritesType, ItemsType} from "../App";
+type HomePropsType = {
+  items: ItemsType []
+  cartItems:CartType[]
+  searchValue: string
+  setSearchValue: (s:string)=> void
+  onChangeSearchInput: (e:ChangeEvent<HTMLInputElement>) => void
+  onAddToFavorite: (obj:FavoritesType) => void
+  onAddToCart: (obj:CartType)=> void
+  isLoading:boolean
+}
 
-function Home({
+
+const Home:FC<HomePropsType> =({
   items,
   searchValue,
   setSearchValue,
@@ -10,7 +22,7 @@ function Home({
   onAddToFavorite,
   onAddToCart,
   isLoading,
-}) {
+}) => {
   const renderItems = () => {
     const filtredItems = items.filter((item) =>
       item.title.toLowerCase().includes(searchValue.toLowerCase()),
@@ -18,8 +30,8 @@ function Home({
     return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
       <Card
         key={index}
-        onFavorite={(obj) => onAddToFavorite(obj)}
-        onPlus={(obj) => onAddToCart(obj)}
+        onFavorite={(obj:FavoritesType) => onAddToFavorite(obj)}
+        onPlus={(obj:CartType) => onAddToCart(obj)}
         loading={isLoading}
         {...item}
       />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 
 import Card from '../components/Card';
@@ -9,10 +9,14 @@ function Orders() {
   const [orders, setOrders] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
-  React.useEffect(() => {
+
+
+  // https://63c5b88bf80fabd877eed264.mockapi.io/orders
+
+  useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get('https://60d62397943aa60017768e77.mockapi.io/orders');
+        const { data } = await axios.get('https://63c5b88bf80fabd877eed264.mockapi.io/orders');
         setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
         setIsLoading(false);
       } catch (error) {
