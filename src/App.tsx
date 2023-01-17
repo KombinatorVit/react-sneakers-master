@@ -132,7 +132,7 @@ export const App: FC = () => {
 
                 <Header onClickCart={() => setCartOpened(true)}/>
 
-                <Route path="" exact>
+                <Route path="" >
                     <Home
                         items={items}
                         cartItems={cartItems}
@@ -176,9 +176,9 @@ export interface ItemsType {
 }
 
 export interface FavoritesType {
-    createdAt: string;
-    name: string;
-    avatar: string;
+    createdAt?: string;
+    name?: string;
+    avatar?: string;
     id: string;
     title: string;
     imageUrl: string;

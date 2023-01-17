@@ -30,8 +30,8 @@ const Home:FC<HomePropsType> =({
     return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
       <Card
         key={index}
-        onFavorite={(obj:FavoritesType) => onAddToFavorite(obj)}
-        onPlus={(obj:CartType) => onAddToCart(obj)}
+        onFavorite={(obj) => onAddToFavorite(obj)}
+        onPlus={(obj) => onAddToCart(obj)}
         loading={isLoading}
         {...item}
       />
