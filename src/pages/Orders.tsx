@@ -40,11 +40,15 @@ function Orders() {
   );
 }
 
-
+type ItemsOrderType = {
+  id: string
+  title: string
+  price:number
+  imageUrl: string
+}
 export interface OrdersType {
-  createdAt: string;
-  name: string;
-  avatar: string;
-  id: string;
+items: ItemsOrderType[]
 }
 export default Orders;
+
+

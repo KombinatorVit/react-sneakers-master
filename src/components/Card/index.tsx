@@ -26,7 +26,6 @@ const Card: FC<CardPropsType> = ({
                                      favorited = false,
                                      loading = false,
                                  }) => {
-    // @ts-ignore
     const {isItemAdded} = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
     const obj = {id, parentId: id, title, imageUrl, price};

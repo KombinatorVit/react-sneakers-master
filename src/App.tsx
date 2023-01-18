@@ -134,7 +134,7 @@ export const App: FC = () => {
 
                 <Header onClickCart={() => setCartOpened(true)}/>
 
-                <Route path="">
+                <Route path="" exact>
                     <Home
                         items={items}
                         cartItems={cartItems}
@@ -147,11 +147,11 @@ export const App: FC = () => {
                     />
                 </Route>
 
-                <Route path="favorites">
+                <Route path="favorites" exact>
                     <Favorites/>
                 </Route>
 
-                <Route path="orders">
+                <Route path="orders" exact>
                     <Orders/>
                 </Route>
             </div>
@@ -191,7 +191,7 @@ export interface IContextValue {
     items: ItemsType[]
     cartItems: CartType[]
     favorites: FavoritesType[]
-    isItemAdded: (id: string) =>  boolean
+    isItemAdded: (id: string) => boolean
     onAddToFavorite: (obj: FavoritesType) => void
     onAddToCart: (obj: CartType) => void
     setCartOpened: (s: boolean) => void
