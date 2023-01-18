@@ -4,8 +4,8 @@ import AppContext from '../context';
 import {FavoritesType} from "../App";
 
 function Favorites() {
-    // @ts-ignore
     const { favorites, onAddToFavorite } = useContext(AppContext);
+
 
     return (
     <div className="content p-40">
@@ -15,6 +15,7 @@ function Favorites() {
 
       <div className="d-flex flex-wrap">
         {favorites.map((item: FavoritesType) => (
+
           <Card key={item.id} favorited={true} onFavorite={onAddToFavorite} {...item}/>
         ))}
       </div>
