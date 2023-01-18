@@ -1,8 +1,10 @@
 import  {createContext} from 'react';
+import {IContextValue} from "./App";
 
 
 
 
-const AppContext = createContext({})
+// @ts-ignore
+const AppContext = createContext<IContextValue>({})
 
 export default AppContext;

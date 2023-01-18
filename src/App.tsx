@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useState} from 'react';
+import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 import {Route} from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/Header';
@@ -24,7 +24,7 @@ export const App: FC = () => {
 
     // https://6369227915219b8496105d27.mockapi.io/favorites
 
-    React.useEffect(() => {
+    useEffect(() => {
         async function fetchData() {
             try {
                 const [cartResponse, favoritesResponse, itemsResponse] = await Promise.all([
@@ -106,22 +106,24 @@ export const App: FC = () => {
         setSearchValue(event.target.value);
     };
 
-    const isItemAdded = (id: string) => {
+    const isItemAdded = (id: string): boolean => {
         return cartItems.some((obj) => Number(obj.id) === Number(id));
     };
 
+    const value: IContextValue = {
+        items,
+        cartItems,
+        favorites,
+        isItemAdded,
+        onAddToFavorite,
+        onAddToCart,
+        setCartOpened,
+        setCartItems,
+    }
+
     return (
         <AppContext.Provider
-            value={{
-                items,
-                cartItems,
-                favorites,
-                isItemAdded,
-                onAddToFavorite,
-                onAddToCart,
-                setCartOpened,
-                setCartItems,
-            }}>
+            value={value}>
             <div className="wrapper clear">
                 <Drawer
                     items={cartItems}
@@ -132,7 +134,7 @@ export const App: FC = () => {
 
                 <Header onClickCart={() => setCartOpened(true)}/>
 
-                <Route path="" >
+                <Route path="">
                     <Home
                         items={items}
                         cartItems={cartItems}
@@ -162,7 +164,7 @@ export interface CartType {
     createdAt?: string;
     name?: string;
     avatar?: string;
-    id?: string;
+    id: string;
     title: string;
     imageUrl: string;
     price: number;
@@ -183,4 +185,15 @@ export interface FavoritesType {
     title: string;
     imageUrl: string;
     price: number;
+}
+
+export interface IContextValue {
+    items: ItemsType[]
+    cartItems: CartType[]
+    favorites: FavoritesType[]
+    isItemAdded: (id: string) =>  boolean
+    onAddToFavorite: (obj: FavoritesType) => void
+    onAddToCart: (obj: CartType) => void
+    setCartOpened: (s: boolean) => void
+    setCartItems: (obj: CartType[]) => void
 }

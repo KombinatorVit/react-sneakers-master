@@ -5,7 +5,7 @@ import {FavoritesType} from "../App";
 
 function Favorites() {
     // @ts-ignore
-    const { favorites, onAddToFavorite } = useContext<FavoritesType>(AppContext);
+    const { favorites, onAddToFavorite } = useContext(AppContext);
 
     return (
     <div className="content p-40">

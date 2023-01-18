@@ -12,7 +12,7 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 type DrawerPropsType = {
     onClose: () => void
-    onRemove: (id:string | undefined) => void
+    onRemove: (id:string) => void
     items: CartType[]
     opened: boolean
 }
