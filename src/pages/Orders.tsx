@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react';
 import axios from 'axios';
 
-import Card from '../components/Card';
+import Card, {CardPropsType} from '../components/Card';
 
 function Orders() {
   const [orders, setOrders] = React.useState<OrdersType[]>([]);
@@ -33,7 +33,7 @@ function Orders() {
 
       <div className="d-flex flex-wrap">
         {(isLoading ? Array(8).fill({}) : orders).map((item, index) => (
-          <Card key={index} loading={isLoading} {...item} />
+          <Card key={index} loading={isLoading} {...item as CardPropsType} />
         ))}
       </div>
     </div>

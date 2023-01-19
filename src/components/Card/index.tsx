@@ -5,14 +5,14 @@ import AppContext from '../../context';
 
 import styles from './Card.module.scss';
 
-type CardPropsType = {
+export type CardPropsType = {
     id: string
     title: string
-    imageUrl?: string
-    price?: number
-    onFavorite?: (obj:any) => void
-    onPlus?: (obj: any) => void
-    favorited?: boolean
+    imageUrl: string
+    price: number
+    onFavorite: (obj:any) => void
+    onPlus: (obj: any) => void
+    favorited: boolean
     loading?: boolean
 }
 
@@ -26,18 +26,17 @@ const Card: FC<CardPropsType> = ({
                                      favorited = false,
                                      loading = false,
                                  }) => {
-    const {isItemAdded} = useContext(AppContext);
+    const {isItemAdded} = useContext(AppContext) ;
     const [isFavorite, setIsFavorite] = useState(favorited);
     const obj = {id, parentId: id, title, imageUrl, price};
 
     const onClickPlus = () => {
-        // @ts-ignore
+
         onPlus(obj);
     };
 
     const onClickFavorite = () => {
 
-    // @ts-ignore
         onFavorite(obj);
 
         setIsFavorite(!isFavorite);
